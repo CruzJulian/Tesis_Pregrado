@@ -1,0 +1,85 @@
+---
+title: "II Estimación de medidas de probabilidad"
+subtitle: "Poner subtítulo"
+author: "CruzJulian"
+date: "`r Sys.Date()`"
+output:
+  tufte::tufte_html: default
+  tufte::tufte_handout:
+    citation_package: natbib
+    latex_engine: xelatex
+  tufte::tufte_book:
+    citation_package: natbib
+    latex_engine: xelatex
+bibliography: bibliografia.bib
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+library("tufte")
+# invalidate cache when the tufte version changes
+knitr::opts_chunk$set(tidy = FALSE, cache.extra = packageVersion('tufte'))
+options(htmltools.dir.version = FALSE)
+```
+
+## Definición
+
+Sea $(\Omega, \mathcal{A})$ un espacio medible. Sea $\textbf{s} = \{s_i\}_{i\leq n}$ una sucesión finita de elementos de $\Omega$. Sea $\mathbb{P}$ el conjunto de todas las medidas de probabilidad posibles para $(\Omega, \mathcal{A})$. Una función de $\textbf{s}$ en $\mathbb{P}$ se denomina una **Asignación Primaria** y la imágen de $s_i$ se denomina la **Probabilidad Parcial $i$-ésima**.
+
+Asignación Primaria
+
+$$\mathbf{f}  : \textbf{s} \to \mathbb{P}$$
+
+Probabilidad Parcial $i$-ésima
+
+$$s_i \mapsto \mathbf{f}(s_i) = P^*_i, P^*_i\in \mathbb{P}$$
+
+## Definición
+
+Si $f: \Omega\longrightarrow \mathbb{R}$ es una variable aleatoria integrable respecto a $P^*_i = \mathbf{f}(s_i)$, su integral
+
+$$E^*_i(f) = \int f dP^*_i$$
+
+se denomina **Esperanza Parcial $i$-ésima de $f$**.
+
+## Definición
+
+Sea $(\Omega, \mathcal{A})$ un espacio medible. Sea $\textbf{s} = \{s_i\}_{i\leq n}$ un conjunto de elementos de $\Omega$ y $\mathbf{f}$ una asignación primaria. Una combinación convexa de su rango se denomina **Probabilidad Agregada**.
+
+Probabilidad Agregada
+
+$$P^* = \sum \limits_{i =1}^n a_i\mathbf{f}(s_i)=\sum \limits_{i =1}^n a_iP^*_i$$
+
+Donde
+
+$$\sum \limits_{i =1}^n a_i =1$$
+
+Además, si $f$ es una variable aleatoria real de $\Omega$ y $f$ es integrable respecto a $P^* = \sum_{i =1}^n a_iP^*_i$, se denomina \textbf{Esperanza Agregada} a su integral y se nota $E^*(f)$.
+
+## Teorema 1 (Ver demostración en el Apéndice 1)
+
+Sea $(\Omega, \mathcal{A})$ un espacio medible. Sea $\textbf{s} = \{s_i\}_{i\leq n}$ un conjunto de elementos de $\Omega$ y $\mathbf{f}$ una asignación primaria, una sucesión de reales positivos $\{a_i\}_{i\leq n}$ tal que $\sum_{i =1}^n a_i =1$. La probabilidad agregada
+
+
+$$P^* = \sum \limits_{i =1}^n a_i\mathbf{f}(s_i)=\sum \limits_{i =1}^n a_iP^*_i$$
+
+Es una medida de probabilidad bien definida y además es única.
+
+## Teorema 1 (Ver demostración en el Apéndice 1)
+
+Para una función $f$ medible e integrable en todas las medidas $P^*_i$ su esperanza agregada corresponde a la combinación convexa de sus esperanzas parciales.
+
+$$E^* (f ) = \sum \limits_{i = 1}^n a_i E^*_i (f)$$
+
+
+**Corolario:** Se sigue que para una variable aleatoria real $X$ su esperanza agregada corresponde a la combinación convexa de sus esperanzas parciales.
+
+$$E^* (X ) = \sum \limits_{i = 1}^n a_i E^*_i (X)$$
+
+**Corolario:** Se sigue que para una variable aleatoria real $X$ su momento agregado de orden $k$ corresponde a la combinación convexa de sus momentos parciales.
+
+$$E^* (X^k ) = \sum \limits_{i = 1}^n a_i E^*_i (X^k)$$
+
+**Corolario:** Se sigue que para una variable aleatoria real $X$ su función generadora de momentos agregada corresponde a la combinación convexa de sus funciones generadoras de momentos parciales.
+
+$$m^*_X(t) = E^* (e^{tX} ) = \sum \limits_{i = 1}^n a_i E^*_i (e^{tX}) = \sum \limits_{i = 1}^n a_i m^*_{i,X}(t)$$
