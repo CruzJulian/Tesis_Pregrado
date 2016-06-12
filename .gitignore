@@ -2,6 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-I.html
+*.html
 I_cache
 I_files
